@@ -143,6 +143,7 @@ function Header() {
         <button className="grid h-12 w-12 place-items-center md:hidden" onClick={() => setOpen(!open)} aria-label="Abrir menu">
           {open ? <X /> : <MenuIcon />}
         </button>
+        <ThemeToggle />
       </div>
       {open && (
         <nav className="flex flex-col gap-1 border-t border-border px-4 pb-4 md:hidden">
