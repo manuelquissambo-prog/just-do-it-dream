@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import {
-  Flame, Menu as MenuIcon, X, UtensilsCrossed, ShoppingBag, Bike, Star, MapPin, Phone, Clock, MessageCircle, Navigation,
+  Flame, Menu as MenuIcon, X, UtensilsCrossed, ShoppingBag, Bike, Star, MapPin, Phone, Clock, MessageCircle, Navigation, Sun, Moon,
 } from "lucide-react";
+
+const THEME_KEY = "tudo-na-brasa-tema";
 
 // Número do WhatsApp — troque aqui se necessário
 const WHATSAPP_NUMBER = "244947303634";
@@ -61,6 +63,29 @@ function useReveal() {
   }, []);
 }
 
+function ThemeToggle() {
+  const [dark, setDark] = useState(false);
+  useEffect(() => {
+    setDark(document.documentElement.classList.contains("dark"));
+  }, []);
+  const toggle = () => {
+    const next = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", next);
+    try {
+      localStorage.setItem(THEME_KEY, next ? "escuro" : "claro");
+    } catch {
+      /* ignora */
+    }
+    setDark(next);
+  };
+  return (
+    <button onClick={toggle} aria-label={dark ? "Mudar para tema claro" : "Mudar para tema escuro"}
+      className="grid h-12 w-12 place-items-center rounded-full transition hover:bg-foreground/10 hover:text-primary">
+      {dark ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+    </button>
+  );
+}
+
 function H2({ kicker, children }: { kicker: string; children: React.ReactNode }) {
   return (
     <div className="reveal mb-10 text-center">
@@ -115,6 +140,7 @@ function Header() {
           {NAV.map(([l, h]) => <a key={h} href={h} className="text-sm font-medium hover:text-primary">{l}</a>)}
           <a href={wa("Olá, quero fazer um pedido.")} target="_blank" rel="noreferrer" className={btnPrimary}>Fazer pedido</a>
         </nav>
+        <ThemeToggle />
         <button className="grid h-12 w-12 place-items-center md:hidden" onClick={() => setOpen(!open)} aria-label="Abrir menu">
           {open ? <X /> : <MenuIcon />}
         </button>
