@@ -132,6 +132,66 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+:root {
+  --background: oklch(0.17 0.008 30);
+  --foreground: oklch(0.975 0.02 75);
+  --card: oklch(0.22 0.012 30);
+  --card-foreground: oklch(0.975 0.02 75);
+  --popover: oklch(0.22 0.012 30);
+  --popover-foreground: oklch(0.975 0.02 75);
+  --primary: oklch(0.64 0.19 42);
+  --primary-foreground: oklch(0.985 0.01 75);
+  --secondary: oklch(0.8 0.15 75);
+  --secondary-foreground: oklch(0.17 0.008 30);
+  --muted: oklch(0.26 0.012 30);
+  --muted-foreground: oklch(0.78 0.03 70);
+  --accent: oklch(0.8 0.15 75);
+  --accent-foreground: oklch(0.17 0.008 30);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.64 0.19 42);
+  --whatsapp: oklch(0.72 0.17 150);
+  --whatsapp-foreground: oklch(0.99 0 0);
+  --radius: 1rem;
+  --gradient-ember: linear-gradient(135deg, var(--primary), var(--secondary));
+  --shadow-ember: 0 12px 40px -12px color-mix(in oklab, var(--primary) 60%, transparent);
+}
+
+@theme inline {
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --font-display: "Bebas Neue", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --shadow-ember: var(--shadow-ember);
+}
+
+@utility bg-ember {
+  background-image: var(--gradient-ember);
+}
+@utility text-ember {
+  background-image: var(--gradient-ember);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility hero-overlay {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--background) 55%, transparent), var(--background));
+}
+@utility reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
