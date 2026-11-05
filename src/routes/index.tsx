@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import {
-  Flame, Menu as MenuIcon, X, UtensilsCrossed, ShoppingBag, Bike, Star, MapPin, Phone, Clock, MessageCircle, Navigation,
+  Flame, Menu as MenuIcon, X, UtensilsCrossed, ShoppingBag, Bike, Star, MapPin, Phone, Clock, MessageCircle, Navigation, Sun, Moon,
 } from "lucide-react";
+
+const THEME_KEY = "tudo-na-brasa-tema";
 
 // Número do WhatsApp — troque aqui se necessário
 const WHATSAPP_NUMBER = "244947303634";
