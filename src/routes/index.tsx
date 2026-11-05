@@ -63,6 +63,29 @@ function useReveal() {
   }, []);
 }
 
+function ThemeToggle() {
+  const [dark, setDark] = useState(false);
+  useEffect(() => {
+    setDark(document.documentElement.classList.contains("dark"));
+  }, []);
+  const toggle = () => {
+    const next = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", next);
+    try {
+      localStorage.setItem(THEME_KEY, next ? "escuro" : "claro");
+    } catch {
+      /* ignora */
+    }
+    setDark(next);
+  };
+  return (
+    <button onClick={toggle} aria-label={dark ? "Mudar para tema claro" : "Mudar para tema escuro"}
+      className="grid h-12 w-12 place-items-center rounded-full transition hover:bg-foreground/10 hover:text-primary">
+      {dark ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+    </button>
+  );
+}
+
 function H2({ kicker, children }: { kicker: string; children: React.ReactNode }) {
   return (
     <div className="reveal mb-10 text-center">
