@@ -317,7 +317,15 @@ function Location() {
         <div className="reveal space-y-5">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-secondary">Visite-nos</p>
           <h2 className="font-display text-5xl md:text-6xl">Horário e localização</h2>
-          <p className="flex gap-3"><Clock className="h-6 w-6 shrink-0 text-primary" />Aberto até às 23:00 (horário completo a confirmar)</p>
+          <div className="flex gap-3">
+            <Clock className="h-6 w-6 shrink-0 text-primary" />
+            <ul className="w-full max-w-xs space-y-1">
+              {[["Segunda a sexta", "07:00–23:00"], ["Sábado", "08:00–23:00"], ["Domingo", "Encerrado"]].map(([d, h]) => (
+                <li key={d} className="flex justify-between gap-4"><span>{d}</span><span className="font-semibold">{h}</span></li>
+              ))}
+              <li className="pt-1 text-xs text-muted-foreground">O horário pode variar em feriados.</li>
+            </ul>
+          </div>
           <p className="flex gap-3"><MapPin className="h-6 w-6 shrink-0 text-primary" />R. Domingos do Ó, Benguela</p>
           <p className="flex gap-3"><Phone className="h-6 w-6 shrink-0 text-primary" /><a href={`tel:+${WHATSAPP_NUMBER}`} className="hover:text-primary">{PHONE_DISPLAY}</a></p>
           <a href={directions} target="_blank" rel="noreferrer" className={btnPrimary}><Navigation className="h-5 w-5" />Como chegar</a>
