@@ -203,7 +203,7 @@ function MenuSection() {
         ))}
       </div>
       <div className={`grid gap-6 ${tab === "Destaques" ? "md:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`}>
-        {MENU[tab].map((d) => (
+        {(MENU[tab] ?? []).map((d) => (
           <article key={d.name} className="flex flex-col overflow-hidden rounded-3xl border border-border bg-card">
             {d.img && <img src={d.img} alt={d.name} loading="lazy" className="aspect-[4/3] w-full object-cover" />}
             <div className="flex flex-1 flex-col p-6">
