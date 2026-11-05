@@ -140,10 +140,10 @@ function Header() {
           {NAV.map(([l, h]) => <a key={h} href={h} className="text-sm font-medium hover:text-primary">{l}</a>)}
           <a href={wa("Olá, quero fazer um pedido.")} target="_blank" rel="noreferrer" className={btnPrimary}>Fazer pedido</a>
         </nav>
+        <ThemeToggle />
         <button className="grid h-12 w-12 place-items-center md:hidden" onClick={() => setOpen(!open)} aria-label="Abrir menu">
           {open ? <X /> : <MenuIcon />}
         </button>
-        <ThemeToggle />
       </div>
       {open && (
         <nav className="flex flex-col gap-1 border-t border-border px-4 pb-4 md:hidden">
