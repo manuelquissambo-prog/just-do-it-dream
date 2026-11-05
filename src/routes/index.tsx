@@ -15,7 +15,7 @@ const directions = `https://www.google.com/maps/dir/?api=1&destination=${encodeU
 const u = (id: string, w = 1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`;
 const IMG = {
   hero: u("photo-1555939594-58d7cb561ad1", 1920),
-  leitao: u("photo-1544025162-d76694265947"),
+  leitao: u("photo-1432139555190-58524dae6a55"),
   frango: u("photo-1598103442097-8b74394b95c6"),
   ambiente: u("photo-1517248135467-4c7edcad34c4"),
 };
